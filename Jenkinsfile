@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        PATH = "C:\\Users\\AKASH\\AppData\\Local\\Programs\\Python\\Python310;C:\\Users\\AKASH\\AppData\\Local\\Programs\\Python\\Python310\\Scripts;${env.PATH}"
+    }
+
     stages {
         stage('Check Python') {
             steps {
