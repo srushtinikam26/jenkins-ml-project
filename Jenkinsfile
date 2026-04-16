@@ -2,16 +2,22 @@ pipeline {
     agent any
 
     stages {
+        stage('Check Python') {
+            steps {
+                bat 'where python'
+                bat 'python --version'
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
-                bat '"C:\\Users\\AKASH\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" -m pip install --upgrade pip'
-                bat '"C:\\Users\\AKASH\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" -m pip install -r requirements.txt'
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Run Model') {
             steps {
-                bat '"C:\\Users\\AKASH\\AppData\\Local\\Programs\\Python\\Python311\\python.exe" train.py'
+                bat 'python train.py'
             }
         }
     }
